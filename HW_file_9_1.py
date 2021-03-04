@@ -15,15 +15,11 @@ brights = []
 for fi in list_of_fis:
     lat = fi["latitude"]
     lon = fi["longitude"]
-    bright = fi["bright_t31"]
-
-    lats.append(lat)
-    lons.append(lon)
-    brights.append(bright)
-
-print(lats[:10])
-print(lons[:10])
-print(brights[:10])
+    bright = fi["brightness"]
+    if bright >= 450:
+        lats.append(lat)
+        lons.append(lon)
+        brights.append(bright)
 
 # graph
 from plotly.graph_objs import Scattergeo, Layout  # Remeber case sensitive
@@ -35,7 +31,7 @@ data = [
         "lat": lats,
         "lon": lons,
         "marker": {
-            "size": [5 * bright for bright in brights],
+            "size": 5,  # [0.05 * bright for bright in brights],
             "color": brights,
             "colorscale": "Viridis",
             "reversescale": True,
@@ -44,8 +40,8 @@ data = [
     }
 ]
 
-my_layout = Layout(title="West Coast Fires")
+my_layout = Layout(title="US fires")
 
 fig = {"data": data, "layout": my_layout}
 
-offline.plot(fig, filename="west_coast_fires.html")
+offline.plot(fig, filename="US_fires.html")
