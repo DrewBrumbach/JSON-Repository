@@ -11,7 +11,7 @@ json.dump(eq_data, outfile, indent=4)
 # eq_data is the name if the initial dictionary
 # eq_data has 3 keys, type, metadata, features
 
-# print(eq_data['features'][0])
+# print(eq_data["features"][0])
 # above gives the dictionary, with the key 'features' in the 0 index
 
 # print(eq_data["features"][0]["properties"]["mag"])

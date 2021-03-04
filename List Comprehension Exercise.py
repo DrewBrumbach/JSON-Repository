@@ -46,7 +46,8 @@ for i in original_list:
 # which contains only the positive numbers from the list, as integers.
 
 numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
-
+new_list = [i for i in numbers if i >= 0]
+print(new_list)
 
 ## 2 create a list of integers which specify the length of each word in
 ## a sentence except for the word 'the'
@@ -55,6 +56,15 @@ sentence = "the quick brown fox jumps over the lazy dog"
 words = sentence.split()
 
 
+def counter(x):  ## len() function does the same thing... whoops
+    value = 0
+    for i in x:
+        value = value + 1
+    return value
+
+
+new_list = [counter(i) for i in words if i != "the"]
+print(new_list)
 ## Given dictionary is consisted of vehicles and their weights in kilograms.
 ## Contruct a list of the names of vehicles with weight below 5000 kilograms.
 ## In the same list comprehension make the key names all upper case.
@@ -69,3 +79,6 @@ dict = {
     "Bicycle": 7,
     "Motorcycle": 110,
 }
+
+b = [x.upper() for x in dict if dict[x] < 5000]  ## note, iterates through keys
+print(b)
